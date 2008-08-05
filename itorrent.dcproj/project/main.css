@@ -94,7 +94,9 @@ body {
     position: relative;
     list-style-type: none;
     overflow: hidden;
-    margin: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
     padding: 0px;
     -webkit-margin-top-collapse: separate;
     -webkit-margin-bottom-collapse: separate;
@@ -104,8 +106,9 @@ body {
     border-bottom-width: 1px;
     border-left-width: 0px;
     border-color: rgb(224, 224, 224);
+    margin-right: 0px;
+    height: 67px;
     width: auto;
-    height: 47px;
 }
 
 .rowTitle_template {
