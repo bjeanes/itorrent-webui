@@ -62,15 +62,6 @@ body {
     left: 5px;
 }
 
-#listLevel {
-    display: none;
-    position: relative;
-    background-color: white;
-    width: auto;
-    margin-right: 0px;
-    min-height: 372px;
-}
-
 #detailLevel {
     min-height: 372px;
     display: none;
@@ -182,74 +173,19 @@ body {
     margin-bottom: 6px;
 }
 
-#list {
-    overflow: hidden;
-    display: none;
-    padding: 0px;
-    margin-top: 17px;
-    margin-bottom: 17px;
-    background-color: white;
-    -webkit-margin-bottom-collapse: separate;
-    border-style: solid;
-    border-width: 1px;
-    border-color: rgb(172, 172, 172);
-    -webkit-border-top-right-radius: 8px 8px;
-    -webkit-border-top-left-radius: 8px 8px;
-    -webkit-border-bottom-left-radius: 8px 8px;
-    -webkit-border-bottom-right-radius: 8px 8px;
-    position: relative;
-    -webkit-margin-top-collapse: separate;
-    margin-right: 9px;
-    width: auto;
-    margin-left: 9px;
-}
-
-.listRowTemplate_template {
-    position: relative;
-    list-style-type: none;
-    overflow: hidden;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    margin-left: 0px;
-    padding: 0px;
-    border-style: solid;
-    border-width: 0px;
-    border-color: rgb(172, 172, 172);
-    margin-right: 0px;
-    -webkit-margin-top-collapse: separate;
-    -webkit-margin-bottom-collapse: separate;
-    height: 64px;
-    width: auto;
-}
-
 .arrow_template {
     position: absolute;
     width: 8px;
     height: 13px;
     right: 10px;
-    top: 25px;
     background-image: url(Images/chevron.png);
     background-repeat: no-repeat;
+    top: 17px;
     background-position: 0% 0%;
-}
-
-.progress_template {
-    display: block;
-    -webkit-margin-top-collapse: separate;
-    -webkit-margin-bottom-collapse: separate;
-    position: absolute;
-    right: auto;
-    bottom: auto;
-    margin-top: 0px;
-    left: 9px;
-    top: 34px;
-    height: 15px;
-    width: 261px;
 }
 
 .name_template {
     position: absolute;
-    top: 11px;
     color: black;
     font-family: Helvetica;
     font-weight: bold;
@@ -260,6 +196,8 @@ body {
     width: 196px;
     height: 20px;
     left: 9px;
+    opacity: 1;
+    top: 7px;
 }
 
 .downLbl_template {
@@ -273,10 +211,10 @@ body {
     min-height: 10px;
     color: rgb(176, 176, 176);
     left: 209px;
-    top: 11px;
+    top: 7px;
     right: 80px;
     width: auto;
-    bottom: 43px;
+    bottom: 36px;
     height: auto;
 }
 
@@ -291,10 +229,10 @@ body {
     color: rgb(176, 176, 176);
     left: 209px;
     min-height: 9px;
-    top: 22px;
+    top: 18px;
     right: 80px;
     width: auto;
-    bottom: 33px;
+    bottom: 26px;
     height: auto;
 }
 
@@ -305,16 +243,16 @@ body {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    left: 226px;
     font-size: 9px;
     min-height: 10px;
-    top: 21px;
-    right: 30px;
-    width: auto;
-    bottom: 33px;
-    height: auto;
     color: rgb(176, 176, 176);
     text-align: right;
+    left: 225px;
+    top: 17px;
+    right: 29px;
+    width: auto;
+    bottom: 26px;
+    height: auto;
 }
 
 .downSpd_template {
@@ -324,14 +262,78 @@ body {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    left: 226px;
     font-size: 9px;
-    top: 11px;
     min-height: 10px;
-    right: 30px;
-    width: auto;
-    bottom: 43px;
-    height: auto;
     color: rgb(176, 176, 176);
     text-align: right;
+    left: 225px;
+    top: 7px;
+    right: 29px;
+    width: auto;
+    bottom: 36px;
+    height: auto;
+}
+
+#torrentListLevel {
+    display: none;
+    position: relative;
+    width: auto;
+    margin-right: 0px;
+    min-height: 372px;
+    -webkit-border-top-left-radius: 0px 0px;
+    -webkit-border-top-right-radius: 0px 0px;
+    -webkit-border-bottom-left-radius: 0px 0px;
+    -webkit-border-bottom-right-radius: 0px 0px;
+    border-width: 7px !important;
+}
+
+#torrentList {
+    overflow: hidden;
+    display: none;
+    padding: 0px;
+    margin-top: 17px;
+    margin-bottom: 17px;
+    background-color: white;
+    -webkit-margin-bottom-collapse: separate;
+    border-style: solid;
+    border-color: rgb(172, 172, 172);
+    position: relative;
+    -webkit-margin-top-collapse: separate;
+    margin-right: 9px;
+    width: auto;
+    margin-left: 9px;
+    -webkit-border-top-left-radius: 8px 8px;
+    -webkit-border-top-right-radius: 8px 8px;
+    -webkit-border-bottom-left-radius: 8px 8px;
+    -webkit-border-bottom-right-radius: 8px 8px;
+    border-width: 2px;
+}
+
+.torrentListItemTemplate_template {
+    position: relative;
+    list-style-type: none;
+    overflow: hidden;
+    margin-bottom: 0px;
+    padding: 0px;
+    border-style: solid;
+    border-width: 0px;
+    border-color: rgb(172, 172, 172);
+    -webkit-margin-top-collapse: separate;
+    -webkit-margin-bottom-collapse: separate;
+    margin-top: 0px;
+    height: 53px;
+    width: auto;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.progressBar_template {
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    height: 15px;
+    left: 9px;
+    width: 258px;
+    top: 29px;
 }

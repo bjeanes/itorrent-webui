@@ -13,9 +13,10 @@ var dashcodePartSpecs = {
     "downLbl": { "creationFunction": "CreateText", "text": "D:" },
     "downSpd": { "creationFunction": "CreateText", "text": "23 KB/s" },
     "header": { "creationFunction": "CreateHeader", "rootTitle": "iTorrent" },
-    "list": { "creationFunction": "CreateList", "dataArray": ["Item 1", "Item 2", "Item 3"], "dataSourceName": "listController", "labelElementId": "name", "listStyle": "List.ROUNDED_RECTANGLE", "sampleRows": 3, "useDataSource": true },
-    "name": { "creationFunction": "CreateText", "text": "Item" },
+    "name": { "creationFunction": "CreateText", "text": "Gentoo_2008.0_i386.iso" },
+    "progressBar": { "creationFunction": "CreateHorizontalLevelIndicator", "criticalValue": 101, "imageCritical": "Images/on.png", "imageHeight": 15, "imageOff": "Images/off.png", "imageOn": "Images/on.png", "imageWarning": "Images/on.png", "imageWidth": 3, "maxValue": 100, "onValue": 1, "value": 25, "warningValue": 101 },
     "stackLayout": { "creationFunction": "CreateStackLayout", "subviewsTransitions": [{ "direction": "right-left", "duration": "", "timing": "ease-in-out", "type": "push" }, { "direction": "right-left", "duration": "", "timing": "ease-in-out", "type": "push" }] },
+    "torrentList": { "creationFunction": "CreateList", "dataArray": ["Item 1", "Item 2", "Item 3"], "dataSourceName": "listController", "labelElementId": "name", "listStyle": "List.ROUNDED_RECTANGLE", "sampleRows": 3, "useDataSource": true },
     "upLbl": { "creationFunction": "CreateText", "text": "U:" },
     "upSpd": { "creationFunction": "CreateText", "text": "23 KB/s" }
 };

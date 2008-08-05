@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.6">
     <link rel="apple-touch-icon" href="Images/HomeScreenIcon.png">
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="custom.css">
     <link rel="stylesheet" href="Parts/Transitions.css">
     <script type="text/javascript" src="Parts/setup.js" charset="utf-8"></script>
     <script type="text/javascript" src="main.js" charset="utf-8"></script>
@@ -18,6 +19,8 @@
     <script type="text/javascript" src="Parts/PushButton.js" charset="utf-8"></script>
     <script type="text/javascript" src="Parts/ButtonHandler.js" charset="utf-8"></script>
     <script type="text/javascript" src="Parts/List.js" charset="utf-8"></script>
+    <script type="text/javascript" src="Parts/LevelIndicator.js" charset="utf-8"></script>
+    <script type="text/javascript" src="Parts/HorizontalLevelIndicator.js" charset="utf-8"></script>
 </head>
 <body onload="load();">
     <div apple-part="com.apple.Dashcode.part.browser" id="browser">
@@ -25,17 +28,17 @@
             <div apple-part="com.apple.Dashcode.part.gobackbutton" id="back_button" class="apple-no-children back_button_template dashcode-header-backbutton" apple-part-locked="true" apple-text-overflow="ellipsis" apple-style="image-theme: 0; image-shape: 11; image-button-type: 0; image-opacity: 1.00; image-top-color: 0.290196091,0.423529416,0.607843161,1; image-bottom-color: 1,1,1,1; image-radius: 5,5,5,5; image-border: 1; image-border-color: 0,0,0,0.2; image-border-width: 1; shine-on: 1; shine-strength: 0.17; shine-alpha-level: 0.04; shine-height: 0.50; glass-arc-height: 0.00; embossed-on: 1; embossed-depth: 1; embossed-shadow: 0.68; embossed-highlight: 0.3; shadow-include-shadow: 0;" apple-template="true"></div>
         </div>
         <div apple-part="com.apple.Dashcode.part.StackLayout" apple-part-locked="true" id="stackLayout">
-            <div id="listLevel" apple-part-locked="true">
-                <ul apple-part="com.apple.Dashcode.part.roundedRectangleList" id="list">
-                    <li id="listRowTemplate" apple-template="true" class="listRowTemplate_template" style="border-top-width: 0px; ">
+            <div id="torrentListLevel" apple-part-locked="true">
+                <ul apple-part="com.apple.Dashcode.part.roundedRectangleList" id="torrentList">
+                    <li id="torrentListItemTemplate" apple-template="true" class="torrentListItemTemplate_template" style="border-top-width: 0px; ">
                         <div id="name" apple-part="com.apple.Dashcode.part.webtext" class="apple-text apple-no-children name_template" apple-text-overflow="ellipsis" apple-style="part-height-dependent: true;"></div>
                         <div id="arrow" apple-part="com.apple.Dashcode.part.box" class="arrow_template">
                         </div>
-                        <canvas apple-part="com.apple.Dashcode.part.canvas" class="apple-canvas apple-no-children progress_template" width="261" height="15" id="progress"></canvas>
                         <div id="downSpd" apple-part="com.apple.Dashcode.part.webtext" class="apple-text apple-no-children downSpd_template" apple-text-overflow="ellipsis"></div>
                         <div id="upSpd" apple-part="com.apple.Dashcode.part.webtext" class="apple-text apple-no-children upSpd_template" apple-text-overflow="ellipsis"></div>
                         <div id="downLbl" apple-part="com.apple.Dashcode.part.webtext" class="apple-text apple-no-children downLbl_template" apple-text-overflow="ellipsis"></div>
                         <div id="upLbl" apple-part="com.apple.Dashcode.part.webtext" class="apple-text apple-no-children upLbl_template" apple-text-overflow="ellipsis"></div>
+                        <div apple-part="com.apple.Dashcode.part.horizontallevelindicator" class="apple-no-children progressBar_template" id="progressBar"></div>
                     </li>
                 </ul>
             </div>
