@@ -15,9 +15,9 @@
     <script type="text/javascript" src="Parts/StackLayout.js" charset="utf-8"></script>
     <script type="text/javascript" src="Parts/Browser.js" charset="utf-8"></script>
     <script type="text/javascript" src="Parts/Text.js" charset="utf-8"></script>
-    <script type="text/javascript" src="Parts/List.js" charset="utf-8"></script>
     <script type="text/javascript" src="Parts/PushButton.js" charset="utf-8"></script>
     <script type="text/javascript" src="Parts/ButtonHandler.js" charset="utf-8"></script>
+    <script type="text/javascript" src="Parts/List.js" charset="utf-8"></script>
 </head>
 <body onload="load();">
     <div apple-part="com.apple.Dashcode.part.browser" id="browser">
@@ -26,10 +26,11 @@
         </div>
         <div apple-part="com.apple.Dashcode.part.StackLayout" apple-part-locked="true" id="stackLayout">
             <div id="listLevel" apple-part-locked="true">
-                <ul apple-part="com.apple.Dashcode.part.edgeToEdgeList" id="list">
-                    <li id="listRowTemplate" class="listRowTemplate_template" apple-template="true">
-                        <div apple-part="com.apple.Dashcode.part.webtext" class="apple-text apple-no-children rowTitle_template" apple-text-overflow="ellipsis" id="rowTitle"></div>
-                        <div apple-part="com.apple.Dashcode.part.box" id="rowArrow" class="rowArrow_template"></div>
+                <ul apple-part="com.apple.Dashcode.part.roundedRectangleList" id="list">
+                    <li id="listRowTemplate" apple-template="true" class="listRowTemplate_template" style="border-top-width: 0px; ">
+                        <div id="label" apple-part="com.apple.Dashcode.part.webtext" class="apple-text apple-no-children label_template" apple-text-overflow="ellipsis" apple-style="part-height-dependent: true;"></div>
+                        <div id="arrow" apple-part="com.apple.Dashcode.part.box" class="arrow_template">
+                        </div>
                     </li>
                 </ul>
             </div>
