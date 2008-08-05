@@ -10,8 +10,12 @@ var dashcodePartSpecs = {
     "detailDescription": { "creationFunction": "CreateText", "text": "Description" },
     "detailLocation": { "creationFunction": "CreateText", "text": "Location" },
     "detailTitle": { "creationFunction": "CreateText", "text": "Title" },
+    "downLbl": { "creationFunction": "CreateText", "text": "D:" },
+    "downSpd": { "creationFunction": "CreateText", "text": "23 KB/s" },
     "header": { "creationFunction": "CreateHeader", "rootTitle": "iTorrent" },
-    "label": { "creationFunction": "CreateText", "text": "Item" },
-    "list": { "creationFunction": "CreateList", "dataArray": ["Item 1", "Item 2", "Item 3"], "dataSourceName": "listController", "labelElementId": "label", "listStyle": "List.ROUNDED_RECTANGLE", "sampleRows": 3, "useDataSource": true },
-    "stackLayout": { "creationFunction": "CreateStackLayout", "subviewsTransitions": [{ "direction": "right-left", "duration": "", "timing": "ease-in-out", "type": "push" }, { "direction": "right-left", "duration": "", "timing": "ease-in-out", "type": "push" }] }
+    "list": { "creationFunction": "CreateList", "dataArray": ["Item 1", "Item 2", "Item 3"], "dataSourceName": "listController", "labelElementId": "name", "listStyle": "List.ROUNDED_RECTANGLE", "sampleRows": 3, "useDataSource": true },
+    "name": { "creationFunction": "CreateText", "text": "Item" },
+    "stackLayout": { "creationFunction": "CreateStackLayout", "subviewsTransitions": [{ "direction": "right-left", "duration": "", "timing": "ease-in-out", "type": "push" }, { "direction": "right-left", "duration": "", "timing": "ease-in-out", "type": "push" }] },
+    "upLbl": { "creationFunction": "CreateText", "text": "U:" },
+    "upSpd": { "creationFunction": "CreateText", "text": "23 KB/s" }
 };

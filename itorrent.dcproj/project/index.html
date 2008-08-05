@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-    <title>itorrent-webui</title>
+    <title>iTorrent</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.6">
     <link rel="apple-touch-icon" href="Images/HomeScreenIcon.png">
@@ -28,9 +28,14 @@
             <div id="listLevel" apple-part-locked="true">
                 <ul apple-part="com.apple.Dashcode.part.roundedRectangleList" id="list">
                     <li id="listRowTemplate" apple-template="true" class="listRowTemplate_template" style="border-top-width: 0px; ">
-                        <div id="label" apple-part="com.apple.Dashcode.part.webtext" class="apple-text apple-no-children label_template" apple-text-overflow="ellipsis" apple-style="part-height-dependent: true;"></div>
+                        <div id="name" apple-part="com.apple.Dashcode.part.webtext" class="apple-text apple-no-children name_template" apple-text-overflow="ellipsis" apple-style="part-height-dependent: true;"></div>
                         <div id="arrow" apple-part="com.apple.Dashcode.part.box" class="arrow_template">
                         </div>
+                        <canvas apple-part="com.apple.Dashcode.part.canvas" class="apple-canvas apple-no-children progress_template" width="261" height="15" id="progress"></canvas>
+                        <div id="downSpd" apple-part="com.apple.Dashcode.part.webtext" class="apple-text apple-no-children downSpd_template" apple-text-overflow="ellipsis"></div>
+                        <div id="upSpd" apple-part="com.apple.Dashcode.part.webtext" class="apple-text apple-no-children upSpd_template" apple-text-overflow="ellipsis"></div>
+                        <div id="downLbl" apple-part="com.apple.Dashcode.part.webtext" class="apple-text apple-no-children downLbl_template" apple-text-overflow="ellipsis"></div>
+                        <div id="upLbl" apple-part="com.apple.Dashcode.part.webtext" class="apple-text apple-no-children upLbl_template" apple-text-overflow="ellipsis"></div>
                     </li>
                 </ul>
             </div>

@@ -66,8 +66,9 @@ body {
     display: none;
     position: relative;
     background-color: white;
-    min-height: 372px;
     width: auto;
+    margin-right: 0px;
+    min-height: 372px;
 }
 
 #detailLevel {
@@ -197,38 +198,28 @@ body {
     -webkit-border-bottom-left-radius: 8px 8px;
     -webkit-border-bottom-right-radius: 8px 8px;
     position: relative;
+    -webkit-margin-top-collapse: separate;
+    margin-right: 9px;
     width: auto;
     margin-left: 9px;
-    margin-right: 9px;
-    -webkit-margin-top-collapse: separate;
 }
 
 .listRowTemplate_template {
     position: relative;
     list-style-type: none;
-    height: 43px;
-    width: auto;
     overflow: hidden;
-    margin: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
     padding: 0px;
     border-style: solid;
     border-width: 0px;
     border-color: rgb(172, 172, 172);
-}
-
-.label_template {
-    position: absolute;
-    left: 9px;
-    top: 11px;
-    right: 30px;
+    margin-right: 0px;
+    -webkit-margin-top-collapse: separate;
+    -webkit-margin-bottom-collapse: separate;
+    height: 64px;
     width: auto;
-    color: black;
-    font-family: Helvetica;
-    font-weight: bold;
-    font-size: 17px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
 }
 
 .arrow_template {
@@ -236,7 +227,111 @@ body {
     width: 8px;
     height: 13px;
     right: 10px;
-    top: 15px;
+    top: 25px;
     background-image: url(Images/chevron.png);
     background-repeat: no-repeat;
+    background-position: 0% 0%;
+}
+
+.progress_template {
+    display: block;
+    -webkit-margin-top-collapse: separate;
+    -webkit-margin-bottom-collapse: separate;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    left: 9px;
+    top: 34px;
+    height: 15px;
+    width: 261px;
+}
+
+.name_template {
+    position: absolute;
+    top: 11px;
+    color: black;
+    font-family: Helvetica;
+    font-weight: bold;
+    font-size: 17px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 196px;
+    height: 20px;
+    left: 9px;
+}
+
+.downLbl_template {
+    position: absolute;
+    font-family: Helvetica;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 9px;
+    min-height: 10px;
+    color: rgb(176, 176, 176);
+    left: 209px;
+    top: 11px;
+    right: 80px;
+    width: auto;
+    bottom: 43px;
+    height: auto;
+}
+
+.upLbl_template {
+    position: absolute;
+    font-family: Helvetica;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 9px;
+    color: rgb(176, 176, 176);
+    left: 209px;
+    min-height: 9px;
+    top: 22px;
+    right: 80px;
+    width: auto;
+    bottom: 33px;
+    height: auto;
+}
+
+.upSpd_template {
+    position: absolute;
+    font-family: Helvetica;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    left: 226px;
+    font-size: 9px;
+    min-height: 10px;
+    top: 21px;
+    right: 30px;
+    width: auto;
+    bottom: 33px;
+    height: auto;
+    color: rgb(176, 176, 176);
+    text-align: right;
+}
+
+.downSpd_template {
+    position: absolute;
+    font-family: Helvetica;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    left: 226px;
+    font-size: 9px;
+    top: 11px;
+    min-height: 10px;
+    right: 30px;
+    width: auto;
+    bottom: 43px;
+    height: auto;
+    color: rgb(176, 176, 176);
+    text-align: right;
 }
