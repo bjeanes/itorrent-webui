@@ -94,12 +94,12 @@ body {
     margin-left: 9px;
     -webkit-margin-top-collapse: separate;
     -webkit-margin-bottom-collapse: separate;
-    margin-right: 9px;
     margin-top: 13px;
-    width: auto;
-    min-height: 64px;
-    height: auto;
     margin-bottom: 12px;
+    margin-right: 9px;
+    width: auto;
+    min-height: 124px;
+    height: auto;
 }
 
 #topRectangleShape {
@@ -116,61 +116,6 @@ body {
     border-right-width: 8px;
     height: 19px;
     -webkit-border-image: url(Images/topRectangleShape.png) 0 8 0 8 stretch stretch;
-}
-
-#detailTitle {
-    color: black;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    -webkit-margin-top-collapse: separate;
-    -webkit-margin-bottom-collapse: separate;
-    position: relative;
-    font-size: 16pt;
-    font-family: Helvetica;
-    font-weight: bold;
-    margin-left: 0px;
-    text-align: left;
-    margin-top: 7px;
-    margin-right: 0px;
-    width: auto;
-    min-height: 25px;
-    height: auto;
-}
-
-#detailLocation {
-    font-family: Helvetica;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    position: relative;
-    margin-left: 0px;
-    -webkit-margin-top-collapse: separate;
-    -webkit-margin-bottom-collapse: separate;
-    color: rgb(128, 128, 128);
-    font-size: 14px;
-    margin-right: 0px;
-    margin-top: 2px;
-    width: auto;
-    height: auto;
-    min-height: 17px;
-    white-space: nowrap;
-}
-
-#detailDescription {
-    color: black;
-    font-family: Helvetica;
-    font-size: 16px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    position: relative;
-    margin-left: 0px;
-    -webkit-margin-top-collapse: separate;
-    -webkit-margin-bottom-collapse: separate;
-    margin-right: 0px;
-    margin-top: 7px;
-    width: auto;
-    min-height: 20px;
-    height: auto;
-    margin-bottom: 6px;
 }
 
 .arrow_template {
@@ -336,4 +281,115 @@ body {
     left: 9px;
     width: 258px;
     top: 29px;
+}
+
+#detailProgressBar {
+    -webkit-margin-top-collapse: separate;
+    -webkit-margin-bottom-collapse: separate;
+    position: relative;
+    width: 282px;
+    height: 15px;
+    margin-left: 0px;
+    margin-top: 6px;
+}
+
+#detailInfo {
+    font-family: Helvetica;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: relative;
+    margin-left: 0px;
+    -webkit-margin-top-collapse: separate;
+    -webkit-margin-bottom-collapse: separate;
+    color: rgb(128, 128, 128);
+    font-size: 14px;
+    margin-right: 0px;
+    margin-top: 2px;
+    width: auto;
+    height: auto;
+    min-height: 17px;
+    white-space: nowrap;
+}
+
+#detailName {
+    color: black;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-margin-top-collapse: separate;
+    -webkit-margin-bottom-collapse: separate;
+    position: relative;
+    font-size: 16pt;
+    font-family: Helvetica;
+    font-weight: bold;
+    margin-left: 0px;
+    text-align: left;
+    margin-top: 7px;
+    margin-right: 0px;
+    width: auto;
+    min-height: 25px;
+    height: auto;
+}
+
+#startButton {
+    font-family: Helvetica;
+    font-weight: bold;
+    font-size: 12px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    text-shadow: rgba(0, 0, 0, 0.6) 0px -1px 0px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 30px;
+    -webkit-dashboard-region: dashboard-region(control rectangle);
+    -webkit-margin-top-collapse: separate;
+    -webkit-margin-bottom-collapse: separate;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    top: 101px;
+    width: 90px;
+    left: 8px;
+}
+
+#stopButton {
+    font-family: Helvetica;
+    font-weight: bold;
+    font-size: 12px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    text-shadow: rgba(0, 0, 0, 0.6) 0px -1px 0px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 30px;
+    -webkit-dashboard-region: dashboard-region(control rectangle);
+    -webkit-margin-top-collapse: separate;
+    -webkit-margin-bottom-collapse: separate;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    top: 101px;
+    width: 90px;
+    left: 105px;
+}
+
+#filesButton {
+    font-family: Helvetica;
+    font-weight: bold;
+    font-size: 12px;
+    color: rgb(255, 255, 255);
+    text-shadow: rgba(0, 0, 0, 0.6) 0px -1px 0px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 30px;
+    -webkit-dashboard-region: dashboard-region(control rectangle);
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    top: 101px;
+    width: 90px;
+    left: 202px;
 }
