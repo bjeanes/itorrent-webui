@@ -10,7 +10,7 @@ var dashcodePartSpecs = {
     "detailDescription": { "creationFunction": "CreateText", "text": "Description" },
     "detailLocation": { "creationFunction": "CreateText", "text": "Location" },
     "detailTitle": { "creationFunction": "CreateText", "text": "Title" },
-    "header": { "creationFunction": "CreateHeader", "rootTitle": "Browser" },
+    "header": { "creationFunction": "CreateHeader", "rootTitle": "iTorrent" },
     "list": { "creationFunction": "CreateList", "dataSourceName": "listController", "labelElementId": "rowTitle", "listStyle": "List.EDGE_TO_EDGE", "sampleRows": 7, "useDataSource": true },
     "rowTitle": { "creationFunction": "CreateText", "text": "Item" },
     "stackLayout": { "creationFunction": "CreateStackLayout", "subviewsTransitions": [{ "direction": "right-left", "duration": "", "timing": "ease-in-out", "type": "push" }, { "direction": "right-left", "duration": "", "timing": "ease-in-out", "type": "push" }] }
