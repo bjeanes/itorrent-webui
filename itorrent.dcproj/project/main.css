@@ -63,10 +63,11 @@ body {
 }
 
 #detailLevel {
-    min-height: 372px;
     display: none;
     position: relative;
     width: 100%;
+    min-height: 372px;
+    height: auto;
 }
 
 #stackLayout {
@@ -392,4 +393,121 @@ body {
     top: 101px;
     width: 90px;
     left: 202px;
+}
+
+#list {
+    overflow: hidden;
+    display: none;
+    padding: 0px;
+    margin-bottom: 17px;
+    background-color: white;
+    -webkit-margin-bottom-collapse: separate;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(172, 172, 172);
+    -webkit-border-top-right-radius: 8px 8px;
+    -webkit-border-top-left-radius: 8px 8px;
+    -webkit-border-bottom-left-radius: 8px 8px;
+    -webkit-border-bottom-right-radius: 8px 8px;
+    position: relative;
+    -webkit-margin-top-collapse: separate;
+    margin-top: 13px;
+    margin-right: 9px;
+    width: auto;
+    margin-left: 9px;
+}
+
+.listRowTemplate_template {
+    position: relative;
+    list-style-type: none;
+    height: 43px;
+    overflow: hidden;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    padding: 0px;
+    border-style: solid;
+    border-width: 0px;
+    border-color: rgb(172, 172, 172);
+    margin-right: 0px;
+    -webkit-margin-top-collapse: separate;
+    -webkit-margin-bottom-collapse: separate;
+    width: auto;
+}
+
+.label_template {
+    position: absolute;
+    left: 9px;
+    top: 11px;
+    color: black;
+    font-family: Helvetica;
+    font-weight: bold;
+    font-size: 17px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    right: 95px;
+    width: auto;
+    height: auto;
+}
+
+#text {
+    color: black;
+    font-family: Helvetica;
+    font-size: 17px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: relative;
+    -webkit-margin-top-collapse: separate;
+    -webkit-margin-bottom-collapse: separate;
+    text-shadow: rgb(255, 255, 255) 2px 2px 2px;
+    margin-left: 10px;
+    width: auto;
+    margin-right: 9px;
+    min-height: 20px;
+    height: auto;
+}
+
+.fileStartButton_template {
+    font-family: Helvetica;
+    font-weight: bold;
+    font-size: 12px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    text-shadow: rgba(0, 0, 0, 0.6) 0px -1px 0px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -webkit-dashboard-region: dashboard-region(control rectangle);
+    -webkit-margin-top-collapse: separate;
+    -webkit-margin-bottom-collapse: separate;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    top: 11px;
+    height: 20px;
+    width: 35px;
+    left: 214px;
+}
+
+.fileStopButton_template {
+    font-family: Helvetica;
+    font-weight: bold;
+    font-size: 12px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    text-shadow: rgba(0, 0, 0, 0.6) 0px -1px 0px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -webkit-dashboard-region: dashboard-region(control rectangle);
+    -webkit-margin-top-collapse: separate;
+    -webkit-margin-bottom-collapse: separate;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    top: 11px;
+    height: 20px;
+    width: 35px;
+    left: 256px;
 }
