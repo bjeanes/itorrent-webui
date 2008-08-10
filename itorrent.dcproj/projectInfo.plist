@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>AppIconFGImagePoint</key>
-	<string>{0, 14}</string>
+	<string>{-1, 0}</string>
 	<key>AppIconFGImageSize</key>
-	<string>{57, 28.9296}</string>
+	<string>{57, 57}</string>
 	<key>AppIconImageSettings</key>
-	<string>image-theme: 1; image-shape: 3; image-opacity: 1.00; image-top-color: 0,0.559782624,0.0838833675,1; image-bottom-color: 0.567702115,0.676615536,0.572187901,1; image-radius: 12,12,12,12; image-border: 0; image-border-color: 0,0.529399991,0.119164929,1; image-border-width: 5;</string>
+	<string>image-theme: 1; image-shape: 3; image-opacity: 1.00; image-top-color: 0.630579054,0.840833127,0.622232378,1; image-bottom-color: 0.230395973,0.511589229,0.205493242,1; image-radius: 12,12,12,12; image-border: 1; image-border-color: 0.373968095,0.373968095,0.373968095,1; image-border-width: 2;</string>
 	<key>AppIconIncludeFGImage</key>
-	<false/>
+	<true/>
 	<key>CYBackwardCompatibleExport</key>
 	<false/>
 	<key>CYProjectFormatVersion</key>

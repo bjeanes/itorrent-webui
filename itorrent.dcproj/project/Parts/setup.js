@@ -13,7 +13,7 @@ var dashcodePartSpecs = {
     "downLbl": { "creationFunction": "CreateText", "text": "D:" },
     "downSpd": { "creationFunction": "CreateText", "text": "23 KB/s" },
     "filesButton": { "creationFunction": "CreatePushButton", "initialHeight": 30, "initialWidth": 90, "leftImageWidth": 5, "rightImageWidth": 16, "text": "Files" },
-    "fileStartButton": { "creationFunction": "CreatePushButton", "initialHeight": 20, "initialWidth": 35, "leftImageWidth": 5, "rightImageWidth": 5, "text": "|>" },
+    "fileStartButton": { "creationFunction": "CreatePushButton", "customImagePosition": "PushButton.IMAGE_POSITION_NONE", "initialHeight": 20, "initialWidth": 35, "leftImageWidth": 5, "rightImageWidth": 5, "text": "|>" },
     "fileStopButton": { "creationFunction": "CreatePushButton", "initialHeight": 20, "initialWidth": 35, "leftImageWidth": 5, "rightImageWidth": 5, "text": "[ ]" },
     "header": { "creationFunction": "CreateHeader", "rootTitle": "iTorrent" },
     "label": { "creationFunction": "CreateText", "text": "Item" },
