@@ -37,7 +37,11 @@ var detailController = {
     // This object acts as a controller for the detail UI.
     
     setTorrent: function(torrent) {
-        this._torrent = torrent;        
+        this._torrent = torrent;
+        this._representedObject = torrent;
+        
+        document.getElementById('detailName').innerText = torrent.name;
+        document.getElementById('detailProgressBar').object.setValue(torrent.progress);                
     }    
 };
 
