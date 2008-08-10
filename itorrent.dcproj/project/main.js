@@ -11,22 +11,23 @@ var listController = {
     numberOfRows: function() {
         // The List calls this dataSource method to find out how many rows should be in the list.
         console.log('getting torrent list length');
-        return torrentList.torrents.length;
+        return torrentSource.torrents.length;
     },
     
     prepareRow: function(rowElement, rowIndex, tmp) {
-        var torrent = torrentList.torrents[rowIndex];
-        var percent = torrent[4] / 10.0;
-        tmp.name.innerText = torrent[2];
-        tmp.progressBar.object.setValue(percent);
-        tmp.percent.innerText = percent + "%";
+        var torrent = torrentSource.torrents[rowIndex];
+        tmp.name.innerText = torrent.name;
+        tmp.progressBar.object.setValue(torrent.progress);
+        tmp.percent.innerText = torrent.progress + "%";
+        tmp.downSpd.innerText = (Math.round(torrent.downSpd/102.4)/10).toString() + " KB/s";
+        tmp.upSpd.innerText = (Math.round(torrent.upSpd/102.4)/10).toString() + " KB/s";
 
         // We also assign an onclick handler that will cause the browser to go to the detail page.
         var self = this;
         var handler = function() {
             detailController.setTorrent(torrent);
             var browser = document.getElementById('browser').object;
-            browser.goForward(document.getElementById('detailLevel'), torrent[2]);
+            browser.goForward(document.getElementById('detailLevel'), torrent.name);
         };
         rowElement.onclick = handler;
     }
@@ -40,39 +41,80 @@ var detailController = {
     }    
 };
 
-//
-// Function: load()
-// Called by HTML body element's onload event when the web application is ready to start
-//
-function load()
-{
-    torrentList.loadData();
-    dashcode.setupParts();
-}
-
 // Sample data.  Some applications may have static data like this, but most will want to use information fetched remotely via XMLHttpRequest.
-var torrentList = {
+var torrentSource = {
+    build: 0,
+    cache_id: '',
     torrents: [],
+    labels: [],
     loadData: function() {
         // Values you provide
         var feedURL = "http://192.168.0.15:1337/gui/?list=1"; // The feed to fetch
 
         // XMLHttpRequest setup code
         var xmlRequest = new XMLHttpRequest();
-        xmlRequest.onload = function() { torrentList.loadDataFinished(xmlRequest); };
+        xmlRequest.onload = function() { torrentSource.loadDataFinished(xmlRequest); };
         xmlRequest.open("GET", feedURL, true, "admin", "admin");
         xmlRequest.setRequestHeader("Cache-Control", "no-cache");
         xmlRequest.send(null);
     },
     loadDataFinished: function(xmlRequest) {
+        var list = document.getElementById('torrentList').object
         if (xmlRequest.status == 200) {
             console.log('torrent list received');
-            var items = eval('('+xmlRequest.responseText + ')');
-            this.torrents = items['torrents'];
-            document.getElementById('torrentList').object.reloadData();
+            var data      = eval('('+xmlRequest.responseText + ')');
+            for(i in data['torrents']) {
+                this.torrents[i] = new Torrent(data['torrents'][i]);
+            }
+            this.cache_id = data['torrentc'];
+            this.labels   = data['label'];
+            this.build    = data['build'];
+            list.reloadData();
         }
         else {
             alert("Error fetching data: HTTP status " + xmlRequest.status);
         }
     }
 };
+
+function Torrent(tArr)
+{
+    this.hash = tArr[0];
+    this.status = tArr[1];
+    this.name = tArr[2];
+    this.size = tArr[3]; // in bytes
+    this.progress = tArr[4] / 10.0;
+    this.downloaded = tArr[5]; // in bytes
+    this.uploaded = tArr[6];   // in bytes
+    this.ratio = tArr[7] / 10.0;
+    this.downSpd = tArr[8]; // bytes/second
+    this.upSpd = tArr[9];
+    this.eta = tArr[10]; // seconds
+    this.label = tArr[11];
+    this.peersConnected = tArr[12];
+    this.peersAvailable = tArr[13];
+    this.seedsConnected = tArr[14];
+    this.seedsAvailable = tArr[15];
+    this.availability = tArr[16]; // 1/65535ths
+    this.order = tArr[17];
+    this.remaining = tArr[18];
+    
+    this.started = function () { return (this.status & 1); };
+    this.checking = function () { return (this.status & 2); };
+    this.starting_after_check = function () { return (this.status & 4); };
+    this.checked = function () { return (this.status & 8); };
+    this.error = function () { return (this.status & 16); };
+    this.paused = function () { return (this.status & 32); };
+    this.queued = function () { return (this.status & 64); };
+    this.loaded = function () { return (this.status & 128); };
+}
+
+//
+// Function: load()
+// Called by HTML body element's onload event when the web application is ready to start
+//
+function load()
+{
+    dashcode.setupParts();
+    torrentSource.loadData();
+}
