@@ -14,16 +14,16 @@ var listController = {
         return torrentList.torrents.length;
     },
     
-    prepareRow: function(rowElement, rowIndex, templateElements) {
-        // The List calls this dataSource method for every row.  templateElements contains references to all elements inside the template that have an id. We use it to fill in the text of the rowTitle element.
-        if (templateElements.name) {
-            templateElements.name.innerText = torrentList.torrents[rowIndex][2];
-        }
+    prepareRow: function(rowElement, rowIndex, tmp) {
+        var torrent = torrentList.torrents[rowIndex];
+        var percent = torrent[4] / 10.0;
+        tmp.name.innerText = torrent[2];
+        tmp.progressBar.object.setValue(percent);
+        tmp.percent.innerText = percent + "%";
 
         // We also assign an onclick handler that will cause the browser to go to the detail page.
         var self = this;
         var handler = function() {
-            var torrent = torrentList.torrents[rowIndex];
             detailController.setTorrent(torrent);
             var browser = document.getElementById('browser').object;
             browser.goForward(document.getElementById('detailLevel'), torrent[2]);
