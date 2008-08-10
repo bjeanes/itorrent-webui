@@ -10,7 +10,7 @@ var listController = {
     
     numberOfRows: function() {
         // The List calls this dataSource method to find out how many rows should be in the list.
-        return resorts.length;
+        return torrentSrc.items().length;
     },
     
     prepareRow: function(rowElement, rowIndex, templateElements) {
@@ -35,17 +35,10 @@ var listController = {
 var detailController = {
     // This object acts as a controller for the detail UI.
     
-    setResort: function(resort) {
-        this._resort = resort;
-        this._representedObject = resort.name;
+    setTorrent: function(torrent) {
+        this._torrent = torrent;
         
-        // When the resort is set, this controller also updates the DOM for the detail page appropriately.  As you customize the design for the detail page, you will want to extend this code to make sure that the correct information is populated into the detail UI.
-        var detailTitle = document.getElementById('detailTitle');
-        detailTitle.innerHTML = this._resort.name;
-        var detailLocation = document.getElementById('detailLocation');
-        detailLocation.innerHTML = this._resort.location;
-        var detailDescription = document.getElementById('detailDescription');
-        detailDescription.innerHTML = "The snow conditions in " + this._resort.name + " are awesome!";
+        
     }
     
 };
@@ -57,22 +50,33 @@ var detailController = {
 function load()
 {
     dashcode.setupParts();
+    torrents.loadData();
 }
 
 // Sample data.  Some applications may have static data like this, but most will want to use information fetched remotely via XMLHttpRequest.
-var resorts = [
-    { name: "Alta", location: "Alta, Utah" }, 
-    { name: "Aspen/Snowmass", location: "Aspen, Colorado" }, 
-    { name: "Big Bear", location: "Big Bear Lake, California" }, 
-    { name: "Boreal", location: "Truckee, Calfornia" }, 
-    { name: "Brundage Mountain", location: "McCall, Idaho" }, 
-    { name: "Heavenly", location: "Stateline, Nevada" }, 
-    { name: "Kirkwood", location: "Kirkwood, California" }, 
-    { name: "Mammoth Mountain", location: "Mammoth Lakes, California" }, 
-    { name: "Northstar-at-Tahoe", location: "Truckee, California" }, 
-    { name: "Park City Mountain", location: "Park City, Utah" }, 
-    { name: "Snowbird", location: "Snowbird, Utah" }, 
-    { name: "Squaw Valley USA", location: "Olympic Valley, California" }, 
-    { name: "Sugar Bowl", location: "Norden, California" }, 
-    { name: "Vail", location: "Vail, Colorado" }
-];
+var torrents = {
+    _items: [],
+    loadData: function() {
+        // Values you provide
+        var feedURL = "http://192.168.0.15:1337/gui/"; // The feed to fetch
+
+        // XMLHttpRequest setup code
+        var xmlRequest = new XMLHttpRequest();
+        xmlRequest.onload = this.loadDataFinished;
+        xmlRequest.open("GET", feedURL);
+        xmlRequest.setRequestHeader("Cache-Control", "no-cache");
+        xmlRequest.send(null);
+    },
+    
+    loadDataFinished: function(xmlRequest) {
+        if (xmlRequest.status == 200) {
+            // Parse and interpret results
+            // XML results found in xmlRequest.responseXML
+            // Text results found in xmlRequest.responseText
+            this._items = eval('('+xmlRequest.responseText + ')');
+        }
+        else {
+            alert("Error fetching data: HTTP status " + xmlRequest.status);
+        }
+    }
+};
