@@ -10,23 +10,23 @@ var listController = {
     
     numberOfRows: function() {
         // The List calls this dataSource method to find out how many rows should be in the list.
-        return torrentSrc.items().length;
+        console.log('getting torrent list length');
+        return torrentList.torrents.length;
     },
     
     prepareRow: function(rowElement, rowIndex, templateElements) {
         // The List calls this dataSource method for every row.  templateElements contains references to all elements inside the template that have an id. We use it to fill in the text of the rowTitle element.
-        if (templateElements.rowTitle) {
-            templateElements.rowTitle.innerText = resorts[rowIndex].name;
+        if (templateElements.name) {
+            templateElements.name.innerText = torrentList.torrents[rowIndex][2];
         }
 
         // We also assign an onclick handler that will cause the browser to go to the detail page.
         var self = this;
         var handler = function() {
-            var resort = resorts[rowIndex];
-            detailController.setResort(resort);
+            var torrent = torrentList.torrents[rowIndex];
+            detailController.setTorrent(torrent);
             var browser = document.getElementById('browser').object;
-            // The Browser's goForward method is used to make the browser push down to a new level.  Going back to previous levels is handled automatically.
-            browser.goForward(document.getElementById('detailLevel'), resort.name);
+            browser.goForward(document.getElementById('detailLevel'), torrent[2]);
         };
         rowElement.onclick = handler;
     }
@@ -36,11 +36,8 @@ var detailController = {
     // This object acts as a controller for the detail UI.
     
     setTorrent: function(torrent) {
-        this._torrent = torrent;
-        
-        
-    }
-    
+        this._torrent = torrent;        
+    }    
 };
 
 //
@@ -49,31 +46,30 @@ var detailController = {
 //
 function load()
 {
+    torrentList.loadData();
     dashcode.setupParts();
-    torrents.loadData();
 }
 
 // Sample data.  Some applications may have static data like this, but most will want to use information fetched remotely via XMLHttpRequest.
-var torrents = {
-    _items: [],
+var torrentList = {
+    torrents: [],
     loadData: function() {
         // Values you provide
-        var feedURL = "http://192.168.0.15:1337/gui/"; // The feed to fetch
+        var feedURL = "http://192.168.0.15:1337/gui/?list=1"; // The feed to fetch
 
         // XMLHttpRequest setup code
         var xmlRequest = new XMLHttpRequest();
-        xmlRequest.onload = this.loadDataFinished;
-        xmlRequest.open("GET", feedURL);
+        xmlRequest.onload = function() { torrentList.loadDataFinished(xmlRequest); };
+        xmlRequest.open("GET", feedURL, true, "admin", "admin");
         xmlRequest.setRequestHeader("Cache-Control", "no-cache");
         xmlRequest.send(null);
     },
-    
     loadDataFinished: function(xmlRequest) {
         if (xmlRequest.status == 200) {
-            // Parse and interpret results
-            // XML results found in xmlRequest.responseXML
-            // Text results found in xmlRequest.responseText
-            this._items = eval('('+xmlRequest.responseText + ')');
+            console.log('torrent list received');
+            var items = eval('('+xmlRequest.responseText + ')');
+            this.torrents = items['torrents'];
+            document.getElementById('torrentList').object.reloadData();
         }
         else {
             alert("Error fetching data: HTTP status " + xmlRequest.status);
