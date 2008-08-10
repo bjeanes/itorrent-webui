@@ -278,11 +278,12 @@ body {
 #detailProgressBar {
     -webkit-margin-top-collapse: separate;
     -webkit-margin-bottom-collapse: separate;
-    position: relative;
     width: 282px;
     height: 15px;
-    margin-left: 0px;
-    margin-top: 6px;
+    position: absolute;
+    right: auto;
+    top: 77px;
+    margin-bottom: auto;
 }
 
 #detailInfo {
