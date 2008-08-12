@@ -19,8 +19,8 @@ var listController = {
         tmp.name.innerText = torrent.name;
         tmp.progressBar.object.setValue(torrent.progress);
         tmp.percent.innerText = torrent.progress + "%";
-        tmp.downSpd.innerText = (Math.round(torrent.downSpd/102.4)/10).toString() + " KB/s";
-        tmp.upSpd.innerText = (Math.round(torrent.upSpd/102.4)/10).toString() + " KB/s";
+        tmp.downSpd.innerText = torrent.downSpd;
+        tmp.upSpd.innerText = torrent.upSpd;
 
         // We also assign an onclick handler that will cause the browser to go to the detail page.
         var self = this;
@@ -41,8 +41,17 @@ var detailController = {
         this._representedObject = torrent;
         
         document.getElementById('detailName').innerText = torrent.name;
-        document.getElementById('detailProgressBar').object.setValue(torrent.progress);                
-    }    
+        document.getElementById('detailProgressBar').object.setValue(torrent.progress);   
+        document.getElementById('detailInfo').innerText = "D: " + torrent.downSpd + " U: " + torrent.upSpd;
+        document.getElementById('detailPercent').innerText = torrent.progress + " %";
+        
+        var startBtn = document.getElementById('startButton').object;
+        
+        if(torrent.isQueued() && !torrent.isStarted()) {
+            startBtn.setText('Force Start');
+            startBtn.onclick = torrent.forceStart;
+        } else startBtn.onclick = torrent.start;
+    }   
 };
 
 // Sample data.  Some applications may have static data like this, but most will want to use information fetched remotely via XMLHttpRequest.
@@ -91,8 +100,8 @@ function Torrent(tArr)
     this.downloaded = tArr[5]; // in bytes
     this.uploaded = tArr[6];   // in bytes
     this.ratio = tArr[7] / 10.0;
-    this.downSpd = tArr[8]; // bytes/second
-    this.upSpd = tArr[9];
+    this.downSpd = (Math.round(tArr[8]/102.4)/10).toString() + " KB/s"; // bytes/second
+    this.upSpd = (Math.round(tArr[9]/102.4)/10).toString() + " KB/s"; // bytes/second
     this.eta = tArr[10]; // seconds
     this.label = tArr[11];
     this.peersConnected = tArr[12];
@@ -103,14 +112,20 @@ function Torrent(tArr)
     this.order = tArr[17];
     this.remaining = tArr[18];
     
-    this.started = function () { return (this.status & 1); };
-    this.checking = function () { return (this.status & 2); };
-    this.starting_after_check = function () { return (this.status & 4); };
-    this.checked = function () { return (this.status & 8); };
-    this.error = function () { return (this.status & 16); };
-    this.paused = function () { return (this.status & 32); };
-    this.queued = function () { return (this.status & 64); };
-    this.loaded = function () { return (this.status & 128); };
+    this.start = function(){};
+    this.forceStart = function(){};
+    
+    this.isStarted  = function() { 
+        return 0 != (this.status & 1); };
+    this.isChecking = function() { return 0 != (this.status & 2); };
+    this.isStarting_after_check = 
+                    function() { return 0 != (this.status & 4); };
+    this.isChecked  = function() { return 0 != (this.status & 8); };
+    this.isError    = function() { return 0 != (this.status & 16); };
+    this.isPaused   = function() { return 0 != (this.status & 32); };
+    this.isQueued   = function() { 
+        return 0 != (this.status & 64); };
+    this.isLoaded   = function() { return 0 != (this.status & 128); };
 }
 
 //
@@ -122,3 +137,30 @@ function load()
     dashcode.setupParts();
     torrentSource.loadData();
 }
+
+// This object implements the dataSource methods for the list.
+var detailListController = {
+	
+	// Sample data for the content of the list. 
+	// Your application may also fetch this data remotely via XMLHttpRequest.
+	_rowData: ["Item 1", "Item 2", "Item 3"],
+	
+	// The List calls this method to find out how many rows should be in the list.
+	numberOfRows: function() {
+		return this._rowData.length;
+	},
+	
+	// The List calls this method once for every row.
+	prepareRow: function(rowElement, rowIndex, templateElements) {
+		// templateElements contains references to all elements that have an id in the template row.
+		// Ex: set the value of an element with id="label".
+		if (templateElements.detailFileName) {
+			templateElements.detailFileName.innerText = this._rowData[rowIndex];
+		}
+
+		// Assign a click event handler for the row.
+		//rowElement.onclick = function(event) {
+
+		//};
+	}
+};
