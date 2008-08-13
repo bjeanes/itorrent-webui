@@ -117,6 +117,7 @@ function Torrent(tArr)
     this.availability = tArr[16]; // 1/65535ths
     this.order = tArr[17];
     this.remaining = tArr[18];
+    this.isFilesLoaded = false;
     
     this.start = function(){};
     this.forceStart = function(){};
@@ -142,6 +143,7 @@ function Torrent(tArr)
             var fileList = document.getElementById('torrentFileList');
             var files    = eval('('+xmlRequest.responseText + ')')['files'];
             self.files   = files[1];
+            self.isFilesLoaded = true;
             
             fileList.object.reloadData();
         };
@@ -175,20 +177,23 @@ var detailListController = {
 	
 	// The List calls this method to find out how many rows should be in the list.
 	numberOfRows: function() {
-		return this._torrent.files.length;
+        var length = this._torrent.files.length;
+        
+        if(this._torrent.isFilesLoaded)
+            document.getElementById('filesHeader').innerText = "Files ("+length+")";
+            
+		return length;
 	},
 	
 	// The List calls this method once for every row.
 	prepareRow: function(rowElement, rowIndex, templateElements) {
-		// templateElements contains references to all elements that have an id in the template row.
-		// Ex: set the value of an element with id="label".
-		if (templateElements.detailFileName) {
-			templateElements.detailFileName.innerText = this._torrent.files[rowIndex][0];
-		}
-
-		// Assign a click event handler for the row.
-		//rowElement.onclick = function(event) {
-
-		//};
+        templateElements.detailFileName.innerText = this._torrent.files[rowIndex][0];
+        
+        var fileSize = this._torrent.files[rowIndex][1];
+        var downloaded = this._torrent.files[rowIndex][2];
+        var percent = downloaded / fileSize * 100;
+        
+        templateElements.detailFileProgress.innerText = percent.toString() + "%";
+		templateElements.detailFilePriority.value = this._torrent.files[rowIndex][3];
 	}
 };

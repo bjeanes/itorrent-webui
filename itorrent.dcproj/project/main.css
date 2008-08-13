@@ -373,23 +373,6 @@ body {
     margin-right: auto;
 }
 
-#text {
-    color: black;
-    font-family: Helvetica;
-    font-size: 17px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    position: relative;
-    -webkit-margin-top-collapse: separate;
-    -webkit-margin-bottom-collapse: separate;
-    text-shadow: rgb(255, 255, 255) 2px 2px 2px;
-    margin-left: 10px;
-    width: auto;
-    margin-right: 9px;
-    min-height: 20px;
-    height: auto;
-}
-
 .progressBar_template {
     position: absolute;
     right: auto;
@@ -478,24 +461,6 @@ body {
     margin-right: auto;
 }
 
-.detailFilePercent_template {
-    position: absolute;
-    font-family: Helvetica;
-    font-weight: bold;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    font-size: 14px;
-    left: 171px;
-    color: rgb(107, 107, 107);
-    top: 11px;
-    line-height: 20px;
-    right: 83px;
-    width: auto;
-    bottom: 10px;
-    height: auto;
-}
-
 #torrentFileList {
     overflow: hidden;
     display: none;
@@ -534,4 +499,39 @@ body {
     margin-right: 0px;
     height: 41px;
     width: auto;
+}
+
+#filesHeader {
+    color: black;
+    font-family: Helvetica;
+    font-size: 17px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: relative;
+    -webkit-margin-top-collapse: separate;
+    -webkit-margin-bottom-collapse: separate;
+    text-shadow: rgb(255, 255, 255) 2px 2px 2px;
+    margin-left: 10px;
+    width: auto;
+    margin-right: 9px;
+    min-height: 20px;
+    height: auto;
+}
+
+.detailFileProgress_template {
+    position: absolute;
+    font-family: Helvetica;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 14px;
+    left: 171px;
+    color: rgb(107, 107, 107);
+    top: 11px;
+    line-height: 20px;
+    right: 83px;
+    width: auto;
+    bottom: 10px;
+    height: auto;
 }
