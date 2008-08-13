@@ -121,6 +121,7 @@ function Torrent(tArr)
     
     this.start = function(){};
     this.forceStart = function(){};
+    this.stop = function(){};
     
     this.isStarted  = function() { return 0 != (this.status & 1); };
     this.isChecking = function() { return 0 != (this.status & 2); };
