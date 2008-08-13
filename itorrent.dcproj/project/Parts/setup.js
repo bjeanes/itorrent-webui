@@ -16,7 +16,6 @@ var dashcodePartSpecs = {
     "downLbl": { "creationFunction": "CreateText", "text": "D:" },
     "downSpd": { "creationFunction": "CreateText", "text": "23 KB/s" },
     "header": { "creationFunction": "CreateHeader", "rootTitle": "iTorrent" },
-    "list": { "creationFunction": "CreateList", "dataArray": ["Item 1", "Item 2", "Item 3"], "dataSourceName": "detailListController", "labelElementId": "detailFileName", "listStyle": "List.ROUNDED_RECTANGLE", "sampleRows": 3, "useDataSource": true },
     "name": { "creationFunction": "CreateText", "text": "Gentoo_2008.0_i386.iso" },
     "percent": { "creationFunction": "CreateText", "text": "25.0%" },
     "progressBar": { "creationFunction": "CreateHorizontalLevelIndicator", "criticalValue": 15, "imageCritical": "Images/on.png", "imageHeight": 15, "imageOff": "Images/off.png", "imageOn": "Images/on.png", "imageWarning": "Images/on.png", "imageWidth": 3, "maxValue": 100, "onValue": 1, "warningValue": 10 },
@@ -24,6 +23,7 @@ var dashcodePartSpecs = {
     "startButton": { "creationFunction": "CreatePushButton", "initialHeight": 30, "initialWidth": 90, "leftImageWidth": 5, "rightImageWidth": 5, "text": "Start" },
     "stopButton": { "creationFunction": "CreatePushButton", "initialHeight": 30, "initialWidth": 90, "leftImageWidth": 5, "rightImageWidth": 5, "text": "Stop" },
     "text": { "creationFunction": "CreateText", "text": "Files" },
+    "torrentFileList": { "creationFunction": "CreateList", "dataArray": ["Item 1", "Item 2", "Item 3"], "dataSourceName": "detailListController", "labelElementId": "detailFileName", "listStyle": "List.ROUNDED_RECTANGLE", "sampleRows": 3, "useDataSource": true },
     "torrentList": { "creationFunction": "CreateList", "dataArray": ["Item 1", "Item 2", "Item 3"], "dataSourceName": "listController", "labelElementId": "name", "listStyle": "List.ROUNDED_RECTANGLE", "sampleRows": 3, "useDataSource": true },
     "upLbl": { "creationFunction": "CreateText", "text": "U:" },
     "upSpd": { "creationFunction": "CreateText", "text": "23 KB/s" }

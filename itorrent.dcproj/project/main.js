@@ -3,6 +3,8 @@
  You may edit this file to customize your widget or web page 
  according to the license.txt file included in the project.
  */
+ 
+var fetchURL = "http://192.168.0.15:1337/gui/";
 
 var listController = {
     // This object acts as a controller for the list UI.
@@ -40,6 +42,9 @@ var detailController = {
         this._torrent = torrent;
         this._representedObject = torrent;
         
+        detailListController.setTorrent(torrent);
+        torrent.loadFiles();
+        
         document.getElementById('detailName').innerText = torrent.name;
         document.getElementById('detailProgressBar').object.setValue(torrent.progress);   
         document.getElementById('detailInfo').innerText = "D: " + torrent.downSpd + " U: " + torrent.upSpd;
@@ -62,7 +67,7 @@ var torrentSource = {
     labels: [],
     loadData: function() {
         // Values you provide
-        var feedURL = "http://192.168.0.15:1337/gui/?list=1"; // The feed to fetch
+        var feedURL = fetchURL + "?list=1"; // The feed to fetch
 
         // XMLHttpRequest setup code
         var xmlRequest = new XMLHttpRequest();
@@ -92,6 +97,7 @@ var torrentSource = {
 
 function Torrent(tArr)
 {
+    this.files = [];
     this.hash = tArr[0];
     this.status = tArr[1];
     this.name = tArr[2];
@@ -115,17 +121,38 @@ function Torrent(tArr)
     this.start = function(){};
     this.forceStart = function(){};
     
-    this.isStarted  = function() { 
-        return 0 != (this.status & 1); };
+    this.isStarted  = function() { return 0 != (this.status & 1); };
     this.isChecking = function() { return 0 != (this.status & 2); };
     this.isStarting_after_check = 
-                    function() { return 0 != (this.status & 4); };
+                      function() { return 0 != (this.status & 4); };
     this.isChecked  = function() { return 0 != (this.status & 8); };
     this.isError    = function() { return 0 != (this.status & 16); };
     this.isPaused   = function() { return 0 != (this.status & 32); };
     this.isQueued   = function() { 
         return 0 != (this.status & 64); };
     this.isLoaded   = function() { return 0 != (this.status & 128); };
+    
+    this.loadFiles = function() {
+        var feedURL = fetchURL + "?action=getfiles&hash="+this.hash; // The feed to fetch
+
+        // XMLHttpRequest setup code
+        var self = this;
+        var xmlRequest = new XMLHttpRequest();
+        xmlRequest.onload = function() { 
+            var fileList = document.getElementById('torrentFileList');
+            var files    = eval('('+xmlRequest.responseText + ')')['files'];
+            self.files   = files[1];
+            
+            fileList.object.reloadData();
+        };
+        xmlRequest.open("GET", feedURL, true, "admin", "admin");
+        xmlRequest.setRequestHeader("Cache-Control", "no-cache");
+        xmlRequest.send(null);
+    };
+    
+    this.loadFilesFinished = function(xmlRequest) {
+
+    }
 }
 
 //
@@ -140,14 +167,15 @@ function load()
 
 // This object implements the dataSource methods for the list.
 var detailListController = {
-	
-	// Sample data for the content of the list. 
-	// Your application may also fetch this data remotely via XMLHttpRequest.
-	_rowData: ["Item 1", "Item 2", "Item 3"],
+    _torrent: {files: []},
+    
+    setTorrent: function(torrent) {
+        this._torrent = torrent;
+    },
 	
 	// The List calls this method to find out how many rows should be in the list.
 	numberOfRows: function() {
-		return this._rowData.length;
+		return this._torrent.files.length;
 	},
 	
 	// The List calls this method once for every row.
@@ -155,7 +183,7 @@ var detailListController = {
 		// templateElements contains references to all elements that have an id in the template row.
 		// Ex: set the value of an element with id="label".
 		if (templateElements.detailFileName) {
-			templateElements.detailFileName.innerText = this._rowData[rowIndex];
+			templateElements.detailFileName.innerText = this._torrent.files[rowIndex][0];
 		}
 
 		// Assign a click event handler for the row.
