@@ -119,9 +119,16 @@ function Torrent(tArr)
     this.remaining = tArr[18];
     this.isFilesLoaded = false;
     
-    this.start = function(){};
-    this.forceStart = function(){};
-    this.stop = function(){};
+    this.start = function(){this._action('start')};
+    this.forceStart = function(this._action('forcestart')){};
+    this.stop = function(){this._action('stop')};
+    this._action = function(action){
+        var feedURL = fetchURL + "?action="+action+"&hash="+this.hash;
+        var xmlRequest = new XMLHttpRequest();
+        xmlRequest.open("GET", feedURL, true, "admin", "admin");
+        xmlRequest.setRequestHeader("Cache-Control", "no-cache");
+        xmlRequest.send(null);
+    };
     
     this.isStarted  = function() { return 0 != (this.status & 1); };
     this.isChecking = function() { return 0 != (this.status & 2); };
